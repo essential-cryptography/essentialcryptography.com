@@ -1,0 +1,22 @@
+@font-face {
+    font-family: NeoSans;
+    src: url('../fonts/Neo Sans Std Regular.otf');
+}
+@font-face {
+    font-family: NeoSans;
+    src: url('../fonts/Neo Sans Std Light.otf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: NeoSans;
+    src: url('../fonts/Neo Sans Std Bold.otf');
+    font-weight: bold;
+}
+
+body, a, span, div, h1, h2, h3, h4 {
+  font-family: NeoSans;
+}
+
+section {
+  margin: 60px 0;
+}
