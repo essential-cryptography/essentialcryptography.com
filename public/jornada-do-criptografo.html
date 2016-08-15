@@ -6,7 +6,7 @@
   <meta name="description" content="Website oficial do livro 'Criptografia Essencial - A Jornada do Criptógrafo', escrito por Sean Michael Wykes." />
   <meta name="keywords" content="criptografia essencial, criptografia, profissão do criptógrafo, serviços criptográficos, tecnologia da criptografia, aplicações seguras, iniciantes em criptografia, engenharia de segurança de aplicações, a jornada do criptógrafo, Sean Michael Wykes" />
   <meta name="author" content="Sean Michael Wykes">
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+  <!--link href='/favicon.ico' rel='icon' type='image/x-icon'/-->
   <link href="static/css/foundation.css" rel="stylesheet" media="screen" type="text/css" />
   <script src="static/js/vendor/jquery.js"></script>
   <style>
@@ -28,10 +28,10 @@
   body, a, span, div, h1, h2, h3, h4 {
     font-family: NeoSans;
   }
-  .dense h1, .dense h2, .dense h3, .dense h4, .dense h5, .dense h6 {
+  .dense>h1, .dense>h2, .dense>h3, .dense>h4, .dense>h5, .dense>h6, .dense>p {
     line-height: 1.2;
   }
-  .denser h1, .denser h2, .denser h3, .denser h4, .denser h5, .denser h6 {
+  .denser>h1, .denser>h2, .denser>h3, .denser>h4, .denser>h5, .denser>h6, .denser>p {
     line-height: 1.0;
   }
   .text-larger {
@@ -174,9 +174,12 @@
       <div class="column small-1">
         <span class="quoteL">&nbsp;</span>
       </div>
-      <div class="column small-10">
+      <div class="column small-10 dense">
         <h3>
-          Se a informação é vital para o mundo moderno, e se a criptografia é essencial para proteger esta informação, então a formação da próxima geração de profissionais criptógrafos práticos se tornou tarefa prioritária e inadiável.
+          Se a <i>informação</i> é vital para o mundo moderno,
+          e se a <i>criptografia</i> é essencial para proteger esta informação,
+          então a <i>formação</i> da próxima geração de <i>profissionais</i> &dash; os criptógrafos práticos &dash;
+          se tornou tarefa prioritária e inadiável.
         </h3>
         <br/>
         <h4>Sean Michael Wykes</h4>
@@ -186,14 +189,14 @@
       </div>
     </header>
 
-    <div class="content row">
+    <div class="content row expanded">
       <div class="column large-7">
         <img src="static/images/book.png"></img>
       </div>
-      <div class="description column text-center large-5 large-text-left denser">
+      <div class="description column text-center large-5 large-text-left dense">
         <h1>Criptografia Essencial</h1>
         <h2><span class="text-smaller">A jornada do criptógrafo</span></h2>
-        <h4>
+        <h4 class="dense">
           <p>Está nascendo uma nova profissão, <i>o criptógrafo digital</i>, cuja missão é proteger a informação no mundo tecnológico. Essa profissão fascinante e desafiante, além de cada vez mais valorizada, é de fundamental importância para a sociedade moderna, que se tornou dependente de dispositivos eletrônicos controlados por software.</p>
         </h4>
       </div>
@@ -305,7 +308,7 @@
 
     <div class="row content column large-10 centered">
       <form id="signup-form" accept-charset="UTF-8">
-        <div style="display:none">
+        <div class="is-hidden">
           <input name="utf8" type="hidden" value="✓">
           <input name="authenticity_token" type="hidden" value="ZTBUqwQTokTXRhOJcNQN6UCy4ZJ/rwqyueLU5lELqMY=">
         </div>
@@ -341,7 +344,6 @@
   <script>
     $( function() {
       $('#signup-form').submit( function( e ) {
-
         e.preventDefault();
         $.ajax( '/api/register', {
           method: 'POST',
