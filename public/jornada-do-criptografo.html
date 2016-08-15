@@ -33,7 +33,7 @@
 
   div.quote blockquote {
     margin-bottom: 10px;
-    padding: 15px 50px 0;
+    //padding: 15px 50px 0;
     border-left: 0px;
   }
 
@@ -44,16 +44,13 @@
     font-style: italic;
   }
 
-div.quote blockquote cite {
+div.quote blockquote .author {
     display: block;
     font-size: 120%;
     text-transform: uppercase;
     color: #3cb5d2;
     font-style: normal;
     padding-top: 10px;
-}
-cite:before {
-  content: '';
 }
 div.quote span.quoteL, div.quote span.quoteR {
   width: 37px;
@@ -120,17 +117,15 @@ div.quote span.quoteR {
   <section id="book-intro" style="background: rgba(1,1,1,0.2);">
     <div class="row quote">
       <blockquote class="columns small-12 large-8 large-centered">
-        <div>
-          <span class="quoteL">&nbsp;</span>
-          <span class="quoteR">&nbsp;</span>
+        <span class="quoteL">&nbsp;</span>
+        <span class="quoteR">&nbsp;</span>
         <p class="text-center">
           Se a informação é vital para o mundo moderno, e se a criptografia é essencial
           para proteger esta informação, então a formação da próxima geração de
           profissionais criptógrafos práticos se tornou tarefa prioritária e inadiável.
 
-          <cite>Sean Michael Wykes</cite>
+          <a href="#book-author" class="text-center author">Sean Michael Wykes</a>
         </p>
-      </div>
       </blockquote>
     </div>
     <div id="book-info" class="row">
@@ -144,7 +139,7 @@ div.quote span.quoteR {
           <h5>Está nascendo uma nova profissão, o criptógrafo digital, cuja missão é proteger a informação
           no mundo tecnológico. Essa profissão fascinante e desafiante, além de cada vez mais valorizada,
           é de fundamental importância para a sociedade moderna, que se tornou dependente de dispositivos
-          eletrônicos controlados por software.</h5><br/>
+          eletrônicos controlados por software.</h5>
         </p>
       </div>
     </div>
