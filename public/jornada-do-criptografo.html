@@ -8,258 +8,364 @@
   <meta name="author" content="Sean Michael Wykes">
   <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
   <link href="static/css/foundation.css" rel="stylesheet" media="screen" type="text/css" />
-  <link href="static/css/jornada.css" rel="stylesheet" media="screen" type="text/css" />
+  <script src="static/js/vendor/jquery.js"></script>
+  <style>
+  @font-face {
+      font-family: NeoSans;
+      src: url('static/fonts/Neo Sans Std Regular.otf');
+  }
+  @font-face {
+      font-family: NeoSans;
+      src: url('static/fonts/Neo Sans Std Light.otf');
+      font-weight: 100;
+  }
+  @font-face {
+      font-family: NeoSans;
+      src: url('static/fonts/Neo Sans Std Bold.otf');
+      font-weight: bold;
+  }
+
+  body, a, span, div, h1, h2, h3, h4 {
+    font-family: NeoSans;
+  }
+  .dense h1, .dense h2, .dense h3, .dense h4, .dense h5, .dense h6 {
+    line-height: 1.2;
+  }
+  .denser h1, .denser h2, .denser h3, .denser h4, .denser h5, .denser h6 {
+    line-height: 1.0;
+  }
+  .text-larger {
+    font-size: 110%;
+  }
+  .text-smaller {
+    font-size: 90%;
+  }
+
+  #book-intro {
+    min-height: 845px;
+    background-color: #33b6d2; }
+    #book-intro header {
+      color: #ffffff;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    #book-intro span.quoteL, #book-intro span.quoteR {
+      width: 85px;
+      height: 52px;
+    }
+    #book-intro span.quoteL {
+      float: left;
+      margin-right: 85px;
+      background-image: url('static/images/aspas1.png');
+    }
+    #book-intro span.quoteR {
+      margin-bottom: 185px;
+      margin-left: 85px;
+      float: right;
+      background-image: url('static/images/aspas2.png');
+    }
+    #book-intro .content {
+      color: #0f1330;
+      padding-bottom: 40px;
+    }
+    #book-intro .description {
+      padding-top: 60px;
+    }
+
+  #target-audience {
+    min-height: 415px;
+    background: url(static/images/background.jpg);
+    color: #ffffff; }
+    #target-audience header {
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+    #target-audience .content {
+      padding-bottom: 80px;
+    }
+
+  #organization {
+    min-height: 845px;
+    background-color: #ffffff;
+    color: #0e1330; }
+    #organization header {
+      padding-top: 100px;
+      padding-bottom: 120px;
+    }
+    #organization .content img {
+      padding-bottom: 1.5rem;
+    }
+    #organization .content .column, #organization .content hr {
+      margin-bottom: 25px;
+    }
+
+  #release {
+    min-height: 415px;
+    background-color: #ab589a;
+    color: #ffffff; }
+    #release header {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    #release .content {
+      padding-bottom: 100px;
+    }
+
+  #author {
+    min-height: 745px;
+    background: url(static/images/background.jpg);
+    color: #ffffff; }
+    #author header {
+      padding-top: 100px;
+      padding-bottom: 120px;
+    }
+    #author .content img {
+      padding-bottom: 40px;
+    }
+
+  #signup {
+    min-height: 415px;
+    background: #41509d;
+    color: #ffffff; }
+    #signup header {
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+    #signup .content {
+      padding-bottom: 40px;
+    }
+
+    #signup input, #signup button {
+      height: 50px;
+
+      background: #fff;
+
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 1rem;
+    }
+    #signup input[type="text"] {
+      border-right: #ddd 1px solid;
+      border-radius: 3px 0 0 3px;
+    }
+    #signup input[type="email"] {
+    }
+    #signup button {
+      background: #e2e2e2;
+      border-radius: 0 3px 3px 0;
+      color: #333;
+      font-weight: bold;
+    }
+    #signup button:hover {
+      background: #d7d7d7
+    }
+
+    @media only screen and (max-width: 767px) {
+      #signup button {
+          border-radius:3px
+      }
+    }
+  </style>
 </head>
-<style>
-  #book-intro:before {
-    #opacity: 0.6;
-    #background-color: #41509d;
-    position:absolute;
-        top:0;
-        left:0;
-        bottom:0;
-        height: auto;
-        right:0;
-//        content: ' ';
-  }
-
-  section#book-intro {
-    margin-top: 0;
-  }
-
-  #book-intro div.quote {
-    padding-top: 20px;
-  }
-
-  div.quote blockquote {
-    margin-bottom: 10px;
-    //padding: 15px 50px 0;
-    border-left: 0px;
-  }
-
-  div.quote blockquote p {
-    font-size: 105%;
-    margin: 0;
-    color: #daba25;
-    font-style: italic;
-  }
-
-div.quote blockquote .author {
-    display: block;
-    font-size: 120%;
-    text-transform: uppercase;
-    color: #3cb5d2;
-    font-style: normal;
-    padding-top: 10px;
-}
-div.quote span.quoteL, div.quote span.quoteR {
-  width: 37px;
-  height: 27px;
-  background-image: url('static/images/large_quotes_blue.png');
-}
-div.quote span.quoteL {
-  float: left;
-  margin-right: 10px;
-  background-position: 0 0px;
-}
-div.quote span.quoteR {
-  margin-left: 10px;
-  float: right;
-  background-position: 0 -27px;
-}
-
-#book-info {
-  padding-top: 30px;
-//  margin-bottom: 40px;
-}
-
-#book-info h1 {
-  line-height: 1;
-}
-
-#book-info h2 {
-    font-weight: 300;
-    color: #daba25;
-    margin: 0 10px 10px;
-}
-
-#book-info p {
-  margin-left: 10px;
-}
-
-#book-public {
-  padding: 30px 0;
-}
-
-#book-structure {
-  padding: 30px 0;
-}
-
-#book-author   {
-  padding: 30px 0;
-}
-
-#book-structure {
-  padding: 30px 0 60px;
-}
-
-#book-structure h2 {
-  color: #f2b220;
-  text-transform: uppercase;
-}
-
-#book-structure p {
-  color: #FEE;
-  font-size: 110%;
-}
-</style>
-<body style="background-image: url(static/images/background_head_1366x618px.png)">
-  <section id="book-intro" style="background: rgba(1,1,1,0.2);">
-    <div class="row quote">
-      <blockquote class="columns small-12 large-8 large-centered">
+<body>
+  <section id="book-intro">
+    <header class="row dense text-center">
+      <div class="column small-1">
         <span class="quoteL">&nbsp;</span>
+      </div>
+      <div class="column small-10">
+        <h3>
+          Se a informação é vital para o mundo moderno, e se a criptografia é essencial para proteger esta informação, então a formação da próxima geração de profissionais criptógrafos práticos se tornou tarefa prioritária e inadiável.
+        </h3>
+        <br/>
+        <h4>Sean Michael Wykes</h4>
+      </div>
+      <div class="column small-1">
         <span class="quoteR">&nbsp;</span>
-        <p class="text-center">
-          Se a informação é vital para o mundo moderno, e se a criptografia é essencial
-          para proteger esta informação, então a formação da próxima geração de
-          profissionais criptógrafos práticos se tornou tarefa prioritária e inadiável.
-
-          <a href="#book-author" class="text-center author">Sean Michael Wykes</a>
-        </p>
-      </blockquote>
-    </div>
-    <div id="book-info" class="row">
-      <div class="columns small-12 large-7" style="background-color: #FFF; margin-bottom: 60px;">
-        <img src="static/images/bookmockup_criptogrfiaessencial.png"></img>
       </div>
-      <div class="columns small-12 large-5" style="color: #fff; padding-left: 2rem;">
+    </header>
+
+    <div class="content row">
+      <div class="column large-7">
+        <img src="static/images/book.png"></img>
+      </div>
+      <div class="description column text-center large-5 large-text-left denser">
         <h1>Criptografia Essencial</h1>
-        <h3 style="color: #daba25; line-height: 1.4;">A Jornada do Criptógrafo</h2>
-        <p>
-          <h5>Está nascendo uma nova profissão, o criptógrafo digital, cuja missão é proteger a informação
-          no mundo tecnológico. Essa profissão fascinante e desafiante, além de cada vez mais valorizada,
-          é de fundamental importância para a sociedade moderna, que se tornou dependente de dispositivos
-          eletrônicos controlados por software.</h5>
+        <h2><span class="text-smaller">A jornada do criptógrafo</span></h2>
+        <h4>
+          <p>Está nascendo uma nova profissão, <i>o criptógrafo digital</i>, cuja missão é proteger a informação no mundo tecnológico. Essa profissão fascinante e desafiante, além de cada vez mais valorizada, é de fundamental importância para a sociedade moderna, que se tornou dependente de dispositivos eletrônicos controlados por software.</p>
+        </h4>
+      </div>
+    </div>
+  </section>
+
+  <section id="target-audience">
+    <header class="row text-center">
+      <h2><b>Público Alvo</b></h2 >
+    </header>
+    <div class="content row">
+      <div class="column large-2 large-push-1 text-center">
+        <img src="static/images/target_icon.png"/>
+      </div>
+      <div class="hide-for-large">&nbsp;<br/>&nbsp;<br/>&nbsp;<br/></div>
+      <div class="column large-8 large-pull-1">
+        <p class="text-larger">
+          Informação é o sangue que corre nas veias da vida moderna, e, diante da massificação dos dispositivos digitais, encontrar meios de proteger essa informação se tornou fundamental. A tecnologia de criptografia é ferramenta primordial nessa busca, porém carece de um enfoque mais prático dirigido a engenheiros e desenvolvedores de software e hardware.
+        </p>
+        <p class="text-larger">
+          Livro para iniciantes e profissionais, apresenta a criptografia na forma de tecnologia e sua aplicação prática na proteção de sistemas e aplicativos digitais.
         </p>
       </div>
     </div>
   </section>
 
-  <section id="book-public" style="background: rgba(0,0,0,0.3)">
-    <div class="row columns large-10 large-centered">
-      <h1 class="text-center" style="color: #9698f4;">Público Alvo</h1>
+  <section id="organization">
+    <header class="row text-center">
+      <h2>Como o livro está organizado</h2>
+    </header>
+    <div class="content row">
+      <div class="column text-center large-3 large-text-left">
+        <img src="static/images/tecnologia_icon.png"/>
+        <h3>TECNOLOGIA</h3>
+        <p class="text-larger">A partir das origens da Criptografia e sua evolucão, mostra as principais mudanças de paradigma ocorridas, e demonstra que estamos na véspera de uma nova mudança, na qual as Tecnologias de Criptografia estão se tornando parte do nosso quotidiano digital, sustentando os pilares de segurança da informação e privacidade que tanto necessitamos.</p>
+      </div>
+      <hr class="hide-for-large"/>
+      <div class="column text-center large-3 large-text-left">
+        <img src="static/images/fundamentos_icon.png"/>
+        <br/>
+        <h3>FUNDAMENTOS</h3>
+        <p class="text-larger">Os Fundamentos da Criptografia Moderna é um mergulho nos blocos básicos de criptografia, tais como as cifras de fluxo e de bloco, os números aleatórios, as funções de hash e a criptografia de chaves públicas, e sem se ater a detalhes, leva a um entendimento claro dos serviços criptográficos que tratam com dados e situações práticas do mundo real.</p>
+      </div>
+      <hr class="hide-for-large"/>
+      <div class="column text-center large-3 large-text-left">
+        <img src="static/images/chaves_icon.png"/>
+        <h3>CHAVES</h3>
+        <p class="text-larger">Explica as diferentes classes de Chaves Criptográfica e destaca como esses segredos númericos são críticos para a segurança dos sistemas e aplicativos. Descreve a sua utilização como Certificados e Identidades Digitais, explica o que são Elementos Seguros e Cartões Inteligentes, e porque são tecnologias ideais para proteger essas chaves.</p>
+      </div>
+      <hr class="hide-for-large"/>
+      <div class="column text-center large-3 large-text-left">
+        <img src="static/images/profissional_icon.png"/>
+        <h3>PROFISSIONAIS</h3>
+        <p class="text-larger">Traz informações inéditas para os futuros Criptógrafos Digitais, revelando como iniciar nessa profissão emergente, os traços e qualidades desejados, como se tornar um Criptógrafo Líder, e a importância da ética na profissão. Delinea os Principais Desafios dos Criptógrafos do Futuro e o seu papel fundamental em construir um mundo mais seguro.</p>
+      </div>
+      <hr class="hide-for-large"/>
+    </div>
+  </section>
+
+  <section id="release" >
+    <header class="row text-center">
+      <h2>Lançamento do Livro</h2>
+    </header>
+    <div class="content row">
+      <div class="column text-center large-6 large-push-1 large-text-left">
+        <h1 style="font-size: 5rem">01/09, às 15h</h1>
+        <h3>Bienal do Livro / São Paulo / SP</h3>
+      </div>
+      <div class="column text-center large-4 large-pull-1 large-text-left">
+        <img src="static/images/logo_bienal_livro.png"/>
+      </div>
+  </section>
+
+  <section id="author">
+    <header class="row text-center">
+      <h2>Sobre o Autor</h2>
+    </header>
+    <div class="content row">
+      <div class="column text-center large-3 large-push-2 large-text-left">
+        <img src="static/images/foto_sean.png"></img>
+      </div>
+
+      <div class="description column text-center large-6 large-pull-1 large-text-left denser">
+        <p class="text-larger">
+          Britânico, Sean Michael Wykes é mestre em Engenharia de Informação pela Universidade de Southampton. Radicado no Brasil desde 1997, é CTO da <u><a href="http://nascent.com.br">Nascent Technology Consultants</a></u> onde se dedica à aplicação prática das tecnologias de criptografia em diversos projetos de inovaçao e desenvolvimento de sistemas seguros, consultoria especializada, palestras, treinamentos e workshops teórico-práticos, e coaching tecnológico de equipes no Brasil e no exterior.
+        </p>
+        <p class="text-larger">
+          Sean é também fundador e CEO da <u><a href="https://cryptographix.org">CryptoGraphix</a></u>, uma organização sem-fins lucrativos fundada com a missão de educar e promover o correto uso da criptografia e técnicas seguras de desenvolvimento de aplicações.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup" style="min-height: 400px">
+    <header class="row column large-6 centered">
+      <div id="signup-callout">
+        <div class="text-center">
+          <h4>Receba no seu inbox trechos do livro, conteúdos inéditos e novidades relacionadas ao assunto.</h4>
+        </div>
+      </div>
+
+      <div id="signup-success" class="is-hidden">
+        <div class="text-center">
+          <h2>Obrigado.</h2>
+          <h5>Em breve receberá um email com o link para o conteúdo adicional.</h5>
+        </div>
+      </div>
+    </header>
+
+    <div class="row content column large-10 centered">
+      <form id="signup-form" accept-charset="UTF-8">
+        <div style="display:none">
+          <input name="utf8" type="hidden" value="✓">
+          <input name="authenticity_token" type="hidden" value="ZTBUqwQTokTXRhOJcNQN6UCy4ZJ/rwqyueLU5lELqMY=">
+        </div>
+        <div class="row large-collapse">
+          <div class="column large-4 large-offset-1">
+            <input type="text" placeholder="Seu Nome" name="name" style="cursor: pointer; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAfBJREFUWAntVk1OwkAUZkoDKza4Utm61iP0AqyIDXahN2BjwiHYGU+gizap4QDuegWN7lyCbMSlCQjU7yO0TOlAi6GwgJc0fT/fzPfmzet0crmD7HsFBAvQbrcrw+Gw5fu+AfOYvgylJ4TwCoVCs1ardYTruqfj8fgV5OUMSVVT93VdP9dAzpVvm5wJHZFbg2LQ2pEYOlZ/oiDvwNcsFoseY4PBwMCrhaeCJyKWZU37KOJcYdi27QdhcuuBIb073BvTNL8ln4NeeR6NRi/wxZKQcGurQs5oNhqLshzVTMBewW/LMU3TTNlO0ieTiStjYhUIyi6DAp0xbEdgTt+LE0aCKQw24U4llsCs4ZRJrYopB6RwqnpA1YQ5NGFZ1YQ41Z5S8IQQdP5laEBRJcD4Vj5DEsW2gE6s6g3d/YP/g+BDnT7GNi2qCjTwGd6riBzHaaCEd3Js01vwCPIbmWBRx1nwAN/1ov+/drgFWIlfKpVukyYihtgkXNp4mABK+1GtVr+SBhJDbBIubVw+Cd/TDgKO2DPiN3YUo6y/nDCNEIsqTKH1en2tcwA9FKEItyDi3aIh8Gl1sRrVnSDzNFDJT1bAy5xpOYGn5fP5JuL95ZjMIn1ya7j5dPGfv0A5eAnpZUY3n5jXcoec5J67D9q+VuAPM47D3XaSeL4AAAAASUVORK5CYII=&quot;); background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; background-repeat: no-repeat;">
+          </div>
+          <div class="column large-4 float-left">
+            <input type="email" placeholder="Seu Email" name="email">
+          </div>
+          <div class="column large-2 float-left">
+            <button type="submit" class="button expanded">Submeter</button>
+          </div>
+        </div>
+      </form>
+
       <br/>
+
       <div class="row">
-        <div class="column small-12 large-4" style="border: 1px solid #FFF;">
-          &nbsp;
-        </div>
-        <div class="column small-12 large-8 text-justify" style="color: #88b; font-size: 115%; padding-left: 30px;">
-          <p>Informação é o sangue que corre nas veias da vida moderna, e, diante da massificação dos
-          dispositivos digitais, encontrar meios de <strong>proteger essa informação</strong> se tornou fundamental.
-          A <strong>tecnologia de criptografia</strong> é ferramenta primordial nessa busca, porém carece de um
-          enfoque mais prático dirigido a <strong>engenheiros e desenvolvedores de software e hardware</strong>.</p>
-          <br/>
-          <p>Livro para <strong>iniciantes</strong> e <strong>profissionais</strong>, apresenta a criptografia na forma de tecnologia e sua
-          <strong>aplicação prática</strong> na proteção de sistemas e aplicativos digitais.</p>
-        </div>
+        <small class="column large-10 large-offset-1 text-center">
+          Ao clicar, você aceita receber ocasionais comunicados contendo novidades sobre
+          o livro e o seu autor, e eventos e informações relacionadas ao assunto.
+          Respeitamos a sua privacidade e nunca enviaremos SPAM.</small>
       </div>
     </div>
   </section>
 
-  <section id="book-structure" style="background: rgba(1,1,1,0.2);">
-    <div class="row columns large-10 large-offset-1">
-      <h1 class="text-center" style="color: #3cb5d2">Como o Livro está Organizado</h1>
-      <br/>
-      <div class="row">
-				<h2 class="column small-12 large-4 large-text-right">Tecnologia</h2>
-				<p class="column small-12 large-8 text-justify">
-          A partir das origens da <strong>Criptografia</strong> e sua evolução, mostra as principais mudanças de paradigma ocorridas, e
-          demonstra que estamos na véspera de uma nova mudança, na qual as <strong>Tecnologias de Criptografia</strong> estão se tornando parte
-          do nosso quotidiano digital, sustentando os pilares de segurança da informação e privacidade que tanto necessitamos.
-        </p>
-      </div>
-			<div class="row">
-				<h2 class="column small-12 large-4 large-text-right">Fundamentos</h2>
-				<p class="column small-12 large-8 text-justify">
-          <strong>Os Fundamentos da Criptografia Moderna</strong> é um mergulho nos blocos básicos de criptografia,
-          tais como as cifras de fluxo e de bloco, os números aleatórios, as funções de hash e a criptografia de chaves públicas, e sem se ater a detalhes,
-          leva a um entendimento claro dos serviços criptográficos que tratam com dados e situações práticas do mundo real.
-        </p>
-			</div>
-      <div class="row">
-				<h2 class="column small-12 large-4 large-text-right">Chaves</h2>
-				<p class="column small-12 large-8 text-justify">
-          Explica as diferentes classes de <strong>Chaves Criptográfica</strong> e destaca como esses
-          segredos númericos são críticos para a segurança dos sistemas e aplicativos.
-          Descreve a sua utilização como <strong>Certificados e Identidades Digitais</strong>, explica o que são <strong>Elementos Seguros e
-          Cartões Inteligentes</strong>, e porque são tecnologias ideais para proteger essas chaves.
-        </p>
-			</div>
-			<div class="row">
-				<h2 class="column small-12 large-4 large-text-right">Profissional</h2>
-				<p class="column small-12 large-8 text-justify" style="color: #EEE;">
-          Traz informações inéditas para os futuros <strong>Criptógrafos Digitais</strong>, revelando
-          como iniciar nessa profissão emergente, os traços e qualidades desejados, como se tornar um
-          <strong>Criptógrafo Líder</strong>, e a importância da ética na profissão. Delinea os
-          <strong>Principais Desafios dos Criptógrafos do Futuro</strong> e o seu papel fundamental em
-          construir um mundo mais seguro.
-        </p>
-			</div>
+  <section id="footer" style="min-height: 100px; background-color: #FFF">
+    <div class="row">
     </div>
   </section>
 
-  <section  id="book-testimonials" >
-    <div class="row columns large-10 large-centered">
-      <h1 class="text-center" style="color: #9698f4;">Lançamento do Livro</h1>
-      <br/>
-      <div class="row">
-        <!--div class="column small-12 medium-4" style="border: 1px solid #FFF;">
-          &nbsp;
-        </div-->
-        <div class="column small-12 xmedium-8 text-justify" style="color: #88b; font-size: 115%; padding-left: 30px; background-color: #3333dd; height: 220px; border: 3px dotted #FFF;">
-          <br/>
-          <br/>
-          <br/>
-          <h1 style="color: #3cb5d2; vertical-align: middle;">01/09/2016&nbsp;&nbsp;<strong>BIENAL DO LIVRO</strong> - SP&nbsp;&nbsp;15:00</h1>
-          <br/>
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    $( function() {
+      $('#signup-form').submit( function( e ) {
 
-  <section id="book-author" style="background: rgba(0,0,0,0.3)">
-    <div class="row columns large-10 large-centered">
-      <h1 class="text-center" style="color: #3cb5d2; padding-bottom: 30px;">Sobre o Autor</h1>
-      <div class="row" style="padding-bottom: 30px;">
-        <div class="column small-12 large-4">
-          <img src="static/images/P1080348.jpg" style="border-radius: 6px; xwidth: 80%; padding-bottom: 30px;"></img>
-        </div>
-        <div class="column small-12 large-8 text-justify" style="color: #88b; padding-left: 30px; font-size: 110%">
-          <p>Britânico, <strong>Sean Michael Wykes</strong> é mestre em Engenharia de Informação pela Universidade de Southampton.
-          Radicado no Brasil desde 1997, é CTO da <u><a href="https://nascent.com.br">Nascent Technology Consultants</a></u> onde se dedica
-          à aplicação prática das tecnologias de criptografia em diversos projetos de inovação e
-          desenvolvimento de sistemas seguros, consultoria especializada, palestras, treinamentos
-          e workshops teórico-práticos, e coaching tecnológico de equipes no Brasil e no exterior.</p>
-          <p>Sean é <strong>fundador</strong> e <strong>presidente</strong> da <u><a href="https://cryptographix.org">CryptoGraphix</a></u>, uma organização sem-fins
-          lucrativos fundada com a missão de educar e promover o correto uso da criptografia e técnicas seguras de
-          desenvolvimento de aplicações.</p>
-          <br/>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    &nbsp:
-  </section>
+        e.preventDefault();
+        $.ajax( '/api/register', {
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            name: $('#signup-form input[name=name]').val(),
+            email: $('#signup-form input[name=email]').val(),
+            token: $('#signup-form input[name=authenticity_token]').val()
+          }
+        })
+        .done(function( data ) {
+          $('#signup-form').hide();
+          $('#signup-callout').hide();
+          $('#signup-success').removeClass('is-hidden');
+        })
+        .error(function( err ) {
+          $('#signup button')
+            .css('background-color', '#A00')
+            .css('color','white')
+            .text('Tente Novamente');
+        });
+      })
+    })
+  </script>
 </body>
-<!--script src="static/js/foundation.min.js"></script-->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-47088788-1', 'auto');
-  ga('send', 'pageview');
-</script>
 </html>
