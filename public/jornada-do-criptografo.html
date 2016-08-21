@@ -6,6 +6,14 @@
   <meta name="description" content="Website oficial do livro 'Criptografia Essencial - A Jornada do Criptógrafo', escrito por Sean Michael Wykes." />
   <meta name="keywords" content="criptografia essencial, criptografia, profissão do criptógrafo, serviços criptográficos, tecnologia da criptografia, aplicações seguras, iniciantes em criptografia, engenharia de segurança de aplicações, a jornada do criptógrafo, Sean Michael Wykes" />
   <meta name="author" content="Sean Michael Wykes">
+
+  <meta name"og:url" content="http://EssentialCryptography.com/">
+  <meta name"og:title" content="Lançamento do livro 'Criptografia Essencial'">
+  <meta name"og:description" content="Lançamento 1/9/2016 no Bienal de Livros - SP.">
+  <meta name"og:site_name" content="Essential Cryptography">
+  <meta name"og:locale" content="pt_BR">
+  <meta name"og:image" content="static/images/book.png">
+
   <!--link href='/favicon.ico' rel='icon' type='image/x-icon'/-->
   <link href="static/css/foundation.css" rel="stylesheet" media="screen" type="text/css" />
   <script src="static/js/vendor/jquery.js"></script>
@@ -46,24 +54,28 @@
     background-color: #33b6d2; }
     #book-intro header {
       color: #ffffff;
-      padding-top: 80px;
+      padding-top: 50px;
       padding-bottom: 80px;
     }
-    #book-intro span.quoteL, #book-intro span.quoteR {
-      width: 85px;
+
+@media screen and (min-width: 40em) {
+  .author-quote {
+    background: url('static/images/aspas1.png') top left no-repeat;
+    padding-left: 75px;
+    padding-top: 30px;
+  }
+
+  .author-quote h4 {
+    background: url('static/images/aspas2.png') bottom right no-repeat;
+    padding-right: 65px;
+    padding-bottom: 45px;
+  }
+}
+
+
+/*      width: 85px;
       height: 52px;
-    }
-    #book-intro span.quoteL {
-      float: left;
-      margin-right: 85px;
-      background-image: url('static/images/aspas1.png');
-    }
-    #book-intro span.quoteR {
-      margin-bottom: 185px;
-      margin-left: 85px;
-      float: right;
-      background-image: url('static/images/aspas2.png');
-    }
+      background-image: url('');*/
     #book-intro .content {
       color: #0f1330;
       padding-bottom: 40px;
@@ -171,21 +183,16 @@
 <body>
   <section id="book-intro">
     <header class="row dense text-center">
-      <div class="column small-1">
-        <span class="quoteL">&nbsp;</span>
-      </div>
-      <div class="column small-10 dense">
-        <h3>
-          Se a <i>informação</i> é vital para o mundo moderno,
-          e se a <i>criptografia</i> é essencial para proteger esta informação,
-          então a <i>formação</i> da próxima geração de <i>profissionais</i> &dash; os criptógrafos práticos &dash;
-          se tornou tarefa prioritária e inadiável.
-        </h3>
-        <br/>
+      <div class="column dense hide-for-small-only">
+        <div class="author-quote">
+          <h4>
+            Se a <i>informação</i> é vital para o mundo moderno,
+            e se a <i>criptografia</i> é essencial para proteger esta informação,
+            então a <i>formação</i> da próxima geração de <i>profissionais</i> &dash; os criptógrafos práticos &dash;
+            se tornou tarefa prioritária e inadiável.
+          </h4>
+        </div>
         <h4>Sean Michael Wykes</h4>
-      </div>
-      <div class="column small-1">
-        <span class="quoteR">&nbsp;</span>
       </div>
     </header>
 
@@ -196,11 +203,24 @@
       <div class="description column text-center large-5 large-text-left dense">
         <h1>Criptografia Essencial</h1>
         <h2><span class="text-smaller">A jornada do criptógrafo</span></h2>
-        <h4 class="dense">
-          <p>Está nascendo uma nova profissão, <i>o criptógrafo digital</i>, cuja missão é proteger a informação no mundo tecnológico. Essa profissão fascinante e desafiante, além de cada vez mais valorizada, é de fundamental importância para a sociedade moderna, que se tornou dependente de dispositivos eletrônicos controlados por software.</p>
+        <h4 class="dense text-justify">
+          <p>Está nascendo uma nova profissão, <i>o criptógrafo digital</i>, cuja missão é proteger
+            a informação no mundo tecnológico.</p>
+            <p>Essa profissão fascinante e desafiante, além de cada vez mais valorizada, é de fundamental importância para a sociedade moderna, que se tornou dependente de dispositivos eletrônicos controlados por software.</p>
         </h4>
       </div>
     </div>
+
+    <!--div class="content row">
+      <div class="column large-10 large-centered">
+        <blockquote class="text-justify text-larger"  style="color: white">
+          Informação é o sangue que corre nas veias da vida moderna, e, diante da massificação dos
+          dispositivos digitais, encontrar meios de proteger essa informação se tornou fundamental.
+          A tecnologia de criptografia é ferramenta primordial nessa busca, porém carece de um
+          enfoque mais prático dirigido a engenheiros e desenvolvedores de software e hardware.
+        </blockquote>
+      </div>
+    </div-->
   </section>
 
   <section id="target-audience">
@@ -214,7 +234,10 @@
       <div class="hide-for-large">&nbsp;<br/>&nbsp;<br/>&nbsp;<br/></div>
       <div class="column large-8 large-pull-1">
         <p class="text-larger">
-          Informação é o sangue que corre nas veias da vida moderna, e, diante da massificação dos dispositivos digitais, encontrar meios de proteger essa informação se tornou fundamental. A tecnologia de criptografia é ferramenta primordial nessa busca, porém carece de um enfoque mais prático dirigido a engenheiros e desenvolvedores de software e hardware.
+          Informação é o sangue que corre nas veias da vida moderna, e, diante da massificação dos
+          dispositivos digitais, encontrar meios de proteger essa informação se tornou fundamental.
+          A tecnologia de criptografia é ferramenta primordial nessa busca, porém carece de um
+          enfoque mais prático dirigido a engenheiros e desenvolvedores de software e hardware.
         </p>
         <p class="text-larger">
           Livro para iniciantes e profissionais, apresenta a criptografia na forma de tecnologia e sua aplicação prática na proteção de sistemas e aplicativos digitais.
@@ -310,7 +333,7 @@
       <form id="signup-form" accept-charset="UTF-8">
         <div class="is-hidden">
           <input name="utf8" type="hidden" value="✓">
-          <input name="authenticity_token" type="hidden" value="ZTBUqwQTokTXRhOJcNQN6UCy4ZJ/rwqyueLU5lELqMY=">
+          <input name="authToken" type="hidden" value="ZTBUqwQTokTXRhOJcNQN6UCy4ZJ/rwqyueLU5lELqMY=">
         </div>
         <div class="row large-collapse">
           <div class="column large-4 large-offset-1">
@@ -342,17 +365,22 @@
   </section>
 
   <script>
+    var authToken;
+
     $( function() {
+      if ( !authToken )
+        authToken = $('#signup-form input[name=authToken]').val();
+
       $('#signup-form').submit( function( e ) {
         e.preventDefault();
-        $.ajax( '/api/register', {
+        $.ajax( '/api/subscribe?origin=ec-hotsite', {
           method: 'POST',
           dataType: 'json',
           data: {
             name: $('#signup-form input[name=name]').val(),
             email: $('#signup-form input[name=email]').val(),
-            token: $('#signup-form input[name=authenticity_token]').val()
-          }
+          },
+          headers: { "Authorization": "Bearer " + authToken },
         })
         .done(function( data ) {
           $('#signup-form').hide();
