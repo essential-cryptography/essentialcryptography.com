@@ -11,13 +11,14 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( bodyParser.json() );
 
 var env = process.env.NODE_ENV || 'development';
-if ( env === 'development' ) {
+if ( env == 'development' ) {
   app.use( errorHandler() );
 
   let expressLogging = require('express-logging'),
       logger = require('logops');
 
   app.use(expressLogging(logger));
+  console.log( 'Request Logging enabled' );
 }
 
 // Mount public as '/'
@@ -34,8 +35,8 @@ app.post( '/api/subscribe', (req, resp, done) => {
   let userEmail = info.email;
 
   fs.appendFile('subscribers.txt', JSON.stringify( info )+',', function (err) {
-    if ( !err )
-      done();
+//    if ( !err )
+ //     done();
   });
 
   var config = JSON.parse( fs.readFileSync("config.json", 'utf8') );
@@ -49,17 +50,21 @@ app.post( '/api/subscribe', (req, resp, done) => {
   var mailOptions = {
       from: config.subscribe.from, //'"Criptografia Essencial" <subscribe@cryptographix.org>', // sender address
       to: 'sean.wykes@nascent.com.br', // list of receivers
-      subject: 'Hello ✔', // Subject line
-      text: 'Hello world' + JSON.stringify( info ), // plaintext body
-      html: '<b>Hello world 🐴</b><br/>'+'<p>'+JSON.stringify( info )+'</p>' // html body
+      subject: 'Livro - Criptografia Essencial', // Subject line
+     // text: 'Hello world' + JSON.stringify( info ), // plaintext body
+      html: fs.readFileSync( "book-sample-request.pt.html", "utf8" ),
   };
 
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){
-      if(error){
-          return console.log(error);
-      }
+    if(error){
+      console.log(error);
+      resp.status(500).json({message: "Unable to send email:", error: error });
+    } else {
       console.log('Message sent: ' + info.response);
+      resp.sendStatus(200);
+    }
+    done();
   });
 
 } );
