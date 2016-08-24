@@ -5,6 +5,8 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import errorHandler = require("errorhandler");
 
+var cuid = require( 'cuid' );
+
 var app = express();
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
@@ -28,7 +30,7 @@ app.get( '/',  (req, resp, done) => {
   resp.redirect( '/jornada-do-criptografo.html' );
 } );
 
-let trackerPNG = fs.readFileSync('public/static/images/1x1.png');
+let trackerPNG = fs.readFileSync('public/static/images/1x1.png' );
 app.get( '/tracker/1x1/:id', (req, resp, done) => {
   fs.appendFile('tracked.txt', req.params.id+',\n', function (err) {
     resp.writeHead(200, {'Content-Type': 'image/png' } );
@@ -53,19 +55,40 @@ var config = JSON.parse( fs.readFileSync("config.json", 'utf8') );
 // create reusable transporter object using the default SMTP transport
 var transporter = nodemailer.createTransport( config.subscribe.options );
 
+// a sample tag function
+function htmlEscape(literals, ...placeholders) {
+    let result = "";
+
+    // interleave the literals with the placeholders
+    for (let i = 0; i < placeholders.length; i++) {
+        result += literals[i];
+        result += placeholders[i]
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    // add the last literal
+    result += literals[literals.length - 1];
+    return result;
+}
+
+var lotmpl = require( 'lodash.template' );
+
+var emailTmp = lotmpl( fs.readFileSync( "book-sample-request.pt.html", "utf8" ) );
+
 function sendMail( template, info, cb ) {
   var auth = config.subscribe.auth;
-
-  let userName = info.name;
-  let userEmail = info.email;
 
   // setup e-mail data with unicode symbols
   var mailOptions = {
       from: config.subscribe.from, //'"Criptografia Essencial" <subscribe@cryptographix.org>', // sender address
-      to: 'sean.wykes@nascent.com.br', // list of receivers
+      to: info.email, // list of receivers
       subject: 'Livro - Criptografia Essencial', // Subject line
      // text: 'Hello world' + JSON.stringify( info ), // plaintext body
-      html: fs.readFileSync( "book-sample-request.pt.html", "utf8" ),
+      html: emailTmp( info ),
   };
 
   // send mail with defined transport object
@@ -85,7 +108,9 @@ function sendMail( template, info, cb ) {
 
 // mount /api
 app.post( '/api/subscribe', (req, resp, done) => {
-  let info: { name: string, email: string, origin: string, lang: string, type: string } = req.body;
+  let info: { name: string, email: string, origin: string, lang: string, type: string, id: string } = req.body;
+
+  info.id = cuid();
 
   fs.appendFile('subscribers.txt', JSON.stringify( info )+',\n', function (err) {
     sendMail( "book-sample-request.pt.html", info, (err) => {
