@@ -28,23 +28,27 @@ app.get( '/',  (req, resp, done) => {
   resp.redirect( '/jornada-do-criptografo.html' );
 } );
 
-// mount /api
-app.post( '/api/subscribe', (req, resp, done) => {
-  let info: { name: string, email: string, origin: string, lang: string, type: string } = req.body;
-  let userName = info.name;
-  let userEmail = info.email;
+app.get( '/subscribe/confirm/:id', (req, resp, done) => {
+  fs.appendFile('confirmed.txt', req.params.id+',\n', function (err) {
+    //if ( !err )
 
-  fs.appendFile('subscribers.txt', JSON.stringify( info )+',', function (err) {
-//    if ( !err )
- //     done();
+    resp.redirect('https://d335luupugsy2.cloudfront.net/cms%2Ffiles%2F3775%2F1471523880E-sample-Wykes_Criptografia_Essencial_1ed.pdf');
+
+    done();
   });
 
-  var config = JSON.parse( fs.readFileSync("config.json", 'utf8') );
-  var auth = config.subscribe.auth;
-  var nodemailer = require('nodemailer');
+} );
 
-  // create reusable transporter object using the default SMTP transport
-  var transporter = nodemailer.createTransport( config.subscribe.options );
+var nodemailer = require('nodemailer');
+var config = JSON.parse( fs.readFileSync("config.json", 'utf8') );
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport( config.subscribe.options );
+
+function sendMail( template, info, cb ) {
+  var auth = config.subscribe.auth;
+
+  let userName = info.name;
+  let userEmail = info.email;
 
   // setup e-mail data with unicode symbols
   var mailOptions = {
@@ -56,17 +60,35 @@ app.post( '/api/subscribe', (req, resp, done) => {
   };
 
   // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
-    if(error){
+  transporter.sendMail(mailOptions, function( error, info ) {
+
+    if ( error ) {
       console.log(error);
-      resp.status(500).json({message: "Unable to send email:", error: error });
+
+      cb( error );
     } else {
       console.log('Message sent: ' + info.response);
-      resp.sendStatus(200);
-    }
-    done();
-  });
 
+      cb( false );
+    }
+  });
+}
+
+// mount /api
+app.post( '/api/subscribe', (req, resp, done) => {
+  let info: { name: string, email: string, origin: string, lang: string, type: string } = req.body;
+
+  fs.appendFile('subscribers.txt', JSON.stringify( info )+',\n', function (err) {
+    sendMail( "book-sample-request.pt.html", info, (err) => {
+      if ( !err ) {
+        resp.sendStatus(200);
+      } else {
+        resp.status(500).json({message: "Unable to send email:", error: err });
+      }
+
+      done();
+    } )
+  });
 } );
 
 //
