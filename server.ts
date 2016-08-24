@@ -28,6 +28,15 @@ app.get( '/',  (req, resp, done) => {
   resp.redirect( '/jornada-do-criptografo.html' );
 } );
 
+let trackerPNG = fs.readFileSync('public/static/images/1x1.png');
+app.get( '/tracker/1x1/:id', (req, resp, done) => {
+  fs.appendFile('tracked.txt', req.params.id+',\n', function (err) {
+    resp.writeHead(200, {'Content-Type': 'image/png' } );
+    resp.end( trackerPNG, 'binary' );
+    done();
+  } );
+} );
+
 app.get( '/subscribe/confirm/:id', (req, resp, done) => {
   fs.appendFile('confirmed.txt', req.params.id+',\n', function (err) {
     //if ( !err )
