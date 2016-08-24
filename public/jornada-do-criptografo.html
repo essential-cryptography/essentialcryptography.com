@@ -7,12 +7,20 @@
   <meta name="keywords" content="criptografia essencial, criptografia, profissão do criptógrafo, serviços criptográficos, tecnologia da criptografia, aplicações seguras, iniciantes em criptografia, engenharia de segurança de aplicações, a jornada do criptógrafo, Sean Michael Wykes" />
   <meta name="author" content="Sean Michael Wykes">
 
-  <meta name"og:url" content="http://EssentialCryptography.com/">
-  <meta name"og:title" content="Lançamento do livro 'Criptografia Essencial'">
-  <meta name"og:description" content="Lançamento 1/9/2016 no Bienal de Livros - SP.">
-  <meta name"og:site_name" content="Essential Cryptography">
-  <meta name"og:locale" content="pt_BR">
-  <meta name"og:image" content="static/images/book.png">
+  <meta name="robots" content="noodp">
+  <link rel="canonical" href="http://EssentialCryptography.com/jornada-do-criptografo.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://EssentialCryptography.com/jornada-do-criptografo.html">
+  <meta property="og:title" content="Lançamento do livro 'Criptografia Essencial'">
+  <meta property="og:description" content="Lançamento 1/9/2016 no Bienal de Livros - SP.">
+  <meta property="og:site_name" content="Essential Cryptography | A Jornada do Criptógrafo">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="static/images/book.png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="Livro 'Criptografia Essencial'">
+  <meta name="twitter:title" content="Criptografia Essencial |  A Jornada do Criptógrafo">
 
   <!--link href='/favicon.ico' rel='icon' type='image/x-icon'/-->
   <link href="static/css/foundation.css" rel="stylesheet" media="screen" type="text/css" />
@@ -373,12 +381,15 @@
 
       $('#signup-form').submit( function( e ) {
         e.preventDefault();
-        $.ajax( '/api/subscribe?origin=ec-hotsite', {
+        $.ajax( '/api/subscribe', {
           method: 'POST',
           dataType: 'json',
           data: {
             name: $('#signup-form input[name=name]').val(),
             email: $('#signup-form input[name=email]').val(),
+            origin: 'ec-hotsite',
+            lang: 'pt',
+            type: 'book-sample-request'
           },
           headers: { "Authorization": "Bearer " + authToken },
         })
