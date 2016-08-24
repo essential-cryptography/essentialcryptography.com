@@ -1,0 +1,23 @@
+{
+  "name": "essential-cryptography",
+  "version": "0.0.1",
+  "description": "Essential Cryptography submit email server",
+  "main": "./build/server.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "author": "cryptographix",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
+    "jsonwebtoken": "^7.0.1",
+    "nodemailer": "^2.5.0"
+  },
+  "devDependencies": {
+    "express-logging": "^1.1.1",
+    "logops": "^1.0.5"
+  }
+}
