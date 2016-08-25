@@ -79,13 +79,22 @@ var lotmpl = require( 'lodash.template' );
 
 var emailTmp = lotmpl( fs.readFileSync( "book-sample-request.pt.html", "utf8" ) );
 
+function escapeFormField( field: string ): string {
+  return field
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+}
+
 function sendMail( template, info, cb ) {
   var auth = config.subscribe.auth;
 
   // setup e-mail data with unicode symbols
   var mailOptions = {
       from: config.subscribe.from, //'"Criptografia Essencial" <subscribe@cryptographix.org>', // sender address
-      to: info.email, // list of receivers
+      to: escapeFormField( info.email ), // list of receivers
       subject: 'Livro - Criptografia Essencial', // Subject line
      // text: 'Hello world' + JSON.stringify( info ), // plaintext body
       html: emailTmp( info ),
@@ -108,9 +117,14 @@ function sendMail( template, info, cb ) {
 
 // mount /api
 app.post( '/api/subscribe', (req, resp, done) => {
-  let info: { name: string, email: string, origin: string, lang: string, type: string, id: string } = req.body;
-
-  info.id = cuid();
+  let info  = {
+    name: escapeFormField( req.body.name ),
+    email: escapeFormField( req.body.email ),
+    origin: escapeFormField( req.body.origin ),
+    lang: escapeFormField( req.body.lang ),
+    type: escapeFormField( req.body.type ),
+    id: cuid()
+  };
 
   fs.appendFile('subscribers.txt', JSON.stringify( info )+',\n', function (err) {
     sendMail( "book-sample-request.pt.html", info, (err) => {
