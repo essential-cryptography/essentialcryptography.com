@@ -17,6 +17,7 @@
   <meta property="og:site_name" content="Essential Cryptography | A Jornada do Criptógrafo">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="http://EssentialCryptography.com/static/images/book.png">
+  <meta property="fb:app_id" content="1775307349391640"/>
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:description" content="Livro 'Criptografia Essencial'">
@@ -189,6 +190,7 @@
   </style>
 </head>
 <body>
+  <div id="fb-root"></div>
   <section id="book-intro">
     <header class="row dense text-center">
       <div class="column dense hide-for-small-only">
@@ -367,8 +369,10 @@
     </div>
   </section>
 
-  <section id="footer" style="min-height: 100px; background-color: #FFF">
+  <section id="footer" style="min-height: 100px; padding-top: 40px; background-color: #FFF">
     <div class="row">
+      <div class="fb-like" data-href="http://EssentialCryptography.com/jornada-do-criptografo.html" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
+
     </div>
   </section>
 
@@ -407,6 +411,24 @@
       })
     })
   </script>
+
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1775307349391640',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 </body>
 
 </html>
