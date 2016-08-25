@@ -34,7 +34,7 @@ let trackerPNG = fs.readFileSync('public/static/images/1x1.png' );
 app.get( '/tracker/1x1/:id', (req, resp, done) => {
   fs.appendFile('tracked.txt', req.params.id+',\n', function (err) {
     resp.writeHead(200, {'Content-Type': 'image/png' } );
-    resp.end( trackerPNG, 'binary' );
+    resp.end( trackerPNG );
     done();
   } );
 } );
@@ -115,7 +115,7 @@ app.post( '/api/subscribe', (req, resp, done) => {
   fs.appendFile('subscribers.txt', JSON.stringify( info )+',\n', function (err) {
     sendMail( "book-sample-request.pt.html", info, (err) => {
       if ( !err ) {
-        resp.sendStatus(200);
+        resp.status(200).json({success: "Email sent"});
       } else {
         resp.status(500).json({message: "Unable to send email:", error: err });
       }

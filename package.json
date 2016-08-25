@@ -4,7 +4,7 @@
   "description": "Essential Cryptography submit email server",
   "main": "./build/server.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./build/server.js"
   },
   "author": "cryptographix",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "express": "^4.13.4",
     "express-jwt": "^3.4.0",
     "jsonwebtoken": "^7.0.1",
+    "lodash-template": "^1.0.0",
     "lodash.template": "^4.4.0",
     "nodemailer": "^2.5.0"
   },
