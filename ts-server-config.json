@@ -3,15 +3,14 @@
     "rootDir": "./",
     "outDir": "./build/",
     "sourceMap": true,
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "declaration": false,
     "noImplicitAny": false,
-    "noResolve": true,
     "removeComments": true,
-    "noLib": false,
     "emitDecoratorMetadata": true,
+    "lib": [ "es2015" ],
     "experimentalDecorators": true
   },
   "atom": {
