@@ -1,0 +1,36 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:ms:20170412':
+    - ghost > compression > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > body-parser > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > express > send > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > express > serve-static > send > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > express > send > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > express > serve-static > send > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > gscan > express > serve-static > send > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > express > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > cookie-session > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > morgan > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > gscan > express > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > gscan > express > finalhandler > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > gscan > express > send > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > gscan > express > serve-static > send > debug > ms:
+        patched: '2017-05-24T03:05:11.091Z'
+    - ghost > gscan > express > send > ms:
+        patched: '2017-05-24T03:05:11.091Z'
