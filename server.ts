@@ -123,6 +123,7 @@ app.post( '/api/subscribe', (req, resp, done) => {
     origin: escapeFormField( req.body.origin ),
     lang: escapeFormField( req.body.lang ),
     type: escapeFormField( req.body.type ),
+    data: new Date(),
     id: cuid()
   };
 
